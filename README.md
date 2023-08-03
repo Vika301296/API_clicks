@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 - Cоздайте в корне файл .env
 ```
-BITLINK_TOKEN='<ваш_токен>' 
+BITLY_TOKEN='<ваш_токен>' 
 ```
 
 - Запустите скрипт командой 

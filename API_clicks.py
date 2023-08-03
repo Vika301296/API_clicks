@@ -9,7 +9,7 @@ def shorten_link(token, long_url):
     url = 'https://api-ssl.bitly.com/v4/bitlinks'
     headers = {'Authorization': f'Bearer {token}'}
     payload = {
-        "long_url": f"{long_url}"
+        "long_url": {long_url}
     }
     response = requests.post(url, json=payload, headers=headers)
     response.raise_for_status()
@@ -35,11 +35,11 @@ def is_bitlink(passed_url):
 if __name__ == "__main__":
     env = Env()
     env.read_env()
-    token = env.str('BITLINK_TOKEN')
+    token = env.str('BITLY_TOKEN')
 
     try:
         url = input('Введите ссылку: ')
-        if is_bitlink(url) is True:
+        if is_bitlink(url):
             total_clicks = count_clicks(token, url)
             print(f'Total Clicks: {total_clicks}')
         else:

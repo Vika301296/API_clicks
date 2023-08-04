@@ -9,7 +9,7 @@ def shorten_link(token, long_url):
     url = 'https://api-ssl.bitly.com/v4/bitlinks'
     headers = {'Authorization': f'Bearer {token}'}
     payload = {
-        "long_url": {long_url}
+        "long_url": long_url
     }
     response = requests.post(url, json=payload, headers=headers)
     response.raise_for_status()

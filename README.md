@@ -18,13 +18,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Переменные окружения
-
-- BITLY_TOKEN
-
-1. Создайте `.env` файл на уровне `counting_clicks.py`.
-2. `.env` содержит информацию без кавычек.
-
 #### Получение токена на API Bitly
 
 - Зарегистрируйтесь на сайте [https://app.bitly.com/]

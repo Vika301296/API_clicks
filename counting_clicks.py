@@ -42,12 +42,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     try:
-        url = args.url
-        if is_bitlink(url):
-            total_clicks = count_clicks(token, url)
+        if is_bitlink(args.url):
+            total_clicks = count_clicks(token, args.url)
             print(f'Total Clicks: {total_clicks}')
         else:
-            bitlink = shorten_link(token, url)
+            bitlink = shorten_link(token, args.url)
             print(f'Bitlink: {bitlink}')
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 400:

@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 - BITLY_TOKEN
 
-1. Создайте `.env` файл на уровне `API_clicks.py`.
+1. Создайте `.env` файл на уровне `counting_clicks.py`.
 2. `.env` содержит информацию без кавычек.
 
 #### Получение токена на API Bitly
@@ -38,7 +38,7 @@ BITLY_TOKEN='<ваш_токен>'
 
 - Запустите скрипт командой 
 ```
-python3 API_clicks.py
+python3 counting_clicks.py <ссылка>
 ```
 
 ### Цель проекта

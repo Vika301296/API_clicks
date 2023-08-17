@@ -1,8 +1,7 @@
+import argparse
 import requests
 
 from environs import Env
-
-long_url = 'https://espanalandia.ru'
 
 
 def shorten_link(token, long_url):
@@ -37,8 +36,13 @@ if __name__ == "__main__":
     env.read_env()
     token = env.str('BITLY_TOKEN')
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "url", help="convert url into bitlink or show the amount of clicks")
+    args = parser.parse_args()
+
     try:
-        url = input('Введите ссылку: ')
+        url = args.url
         if is_bitlink(url):
             total_clicks = count_clicks(token, url)
             print(f'Total Clicks: {total_clicks}')

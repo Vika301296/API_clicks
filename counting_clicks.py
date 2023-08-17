@@ -1,8 +1,6 @@
 import argparse
 import requests
 
-from environs import Env
-
 
 def shorten_link(token, long_url):
     url = 'https://api-ssl.bitly.com/v4/bitlinks'
@@ -24,7 +22,7 @@ def count_clicks(token, bitlink):
     return response.json()['total_clicks']
 
 
-def is_bitlink(passed_url):
+def is_bitlink(token, passed_url):
     headers = {'Authorization': f'Bearer {token}'}
     url = f'https://api-ssl.bitly.com/v4/bitlinks/{passed_url}'
     response = requests.get(url, headers=headers)
@@ -32,21 +30,21 @@ def is_bitlink(passed_url):
 
 
 if __name__ == "__main__":
-    env = Env()
-    env.read_env()
-    token = env.str('BITLY_TOKEN')
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "url", help="convert url into bitlink or show the amount of clicks")
+        'url', help='convert url into bitlink or show the amount of clicks')
+    parser.add_argument(
+        'token', help='type your API token'
+    )
     args = parser.parse_args()
 
     try:
-        if is_bitlink(args.url):
-            total_clicks = count_clicks(token, args.url)
+        if is_bitlink(args.token, args.url):
+            total_clicks = count_clicks(args.token, args.url)
             print(f'Total Clicks: {total_clicks}')
         else:
-            bitlink = shorten_link(token, args.url)
+            bitlink = shorten_link(args.token, args.url)
             print(f'Bitlink: {bitlink}')
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 400:

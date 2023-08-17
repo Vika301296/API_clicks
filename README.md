@@ -30,15 +30,12 @@ pip install -r requirements.txt
 - Зарегистрируйтесь на сайте [https://app.bitly.com/]
 - Перейдите в настройки, слева внизу найдите раздел API
 - Нажмите "Generate token"
-- Внестите полученный токен в файд `.env`: 
-```
-BITLY_TOKEN='<ваш_токен>' 
-```
+
 ## Запуск
 
 - Запустите скрипт командой 
 ```
-python3 counting_clicks.py <ссылка>
+python3 counting_clicks.py <ссылка> <ваш_токен>
 ```
 
 ### Цель проекта
